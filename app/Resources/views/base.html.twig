@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google Tag Manager -->
+        <script>(function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({'gtm.start':
+                            new Date().getTime(), event: 'gtm.js'});
+                var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-PNB932P');</script>
+        <!-- End Google Tag Manager -->
+        <script type="text/javascript">
+            window.smartlook || (function (d) {
+                var o = smartlook = function () {
+                    o.api.push(arguments)
+                }, h = d.getElementsByTagName('head')[0];
+                var c = d.createElement('script');
+                o.api = new Array();
+                c.async = true;
+                c.type = 'text/javascript';
+                c.charset = 'utf-8';
+                c.src = 'https://rec.smartlook.com/recorder.js';
+                h.appendChild(c);
+            })(document);
+            smartlook('init', '886b4fec6a9c1caaddff9545e3262c6356f0282e');
+        </script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <!-- Bootstrap -->
+        <meta charset="UTF-8" />
+        <title>Aguasclaras residencial</title>
+        {% block stylescheet %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/miostyle.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/lightbox.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/responsiveslides.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/ui.datepicker.css') }}">
+            <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
+
+        {% endblock %}
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-52854210-3', 'auto');
+            ga('send', 'pageview');
+
+        </script>
+    </head>
+    <body>
+        
+           <!-- controllo lngua -->
+        {% if app.request.getLocale()== 'pt' %}
+            {% set language = 1 %} 
+        {%else%}
+            {% set language = 0 %} 
+        {% endif %} 
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PNB932P"
+                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        {% block testata %}
+            <div class="container">
+                <!-- INIZIO HEADER -->
+                <div class="row head">
+                    <div class="col-xs-12  col-sm-5 logo">     
+                        <a href="{{path('')}}">       {% media entityhome.0.imglogo.id, 'big' %}
+                        </a>
+                    </div>
+                    <div class="col-xs-12 col-sm-7 contact">
+                        <h2 class="glyphicon glyphicon-phone" aria-hidden="true">CALL US:<a href="tel:{{ entityhome[language].numtel}}">  {{ entityhome[language].numtel}}</a></h2>
+
+                        <h2 class="glyphicon glyphicon-map-marker" aria-hidden="true">GPS HELP:<a id="modal-986538" href="#modal-container-986538" role="button" 
+                                                                                                  data-toggle="modal"> {{ entityhome[language].viewmaps}}</a></h2>
+                        <div class="modal fade" id="modal-container-986538" role="dialog" aria-labelledby="myModalLabel" 
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            ×
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel">
+                                            MAPS 
+                                        </h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <iframe src="{{ entityhome[language].linkmap}}"
+                                                width="570" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                    </div>
+                                    <div class="modal-footer">
+
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                            Close
+                                        </button> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+                </div>
+            </div>
+            <!-- FINE HEADER -->
+        {% endblock %}
+        {% block form %}
+            <!-- INIZIO FORM DISPONIBILITA -->
+            <div class="container">
+                <div class="row">
+                    <form class="form-inline "  class="form-group">
+                        <div class="col-xs-12 col-md-3">
+                            <div class="form-group xsform datepicker">
+                                <button type="submit"   class="btn btn-default">{{ entityhome[language].dispform}}</button>
+                                <img src="img/calendario.gif" id="imgCalendario" class="imgcal">
+                            </div>
+                        </div>
+                        <div class="col-xs-12  col-md-3">
+
+                            <div  id="datepicker1">
+
+                                {{ form_row(form.arrivo, {'attr': {'placeholder': 'check-in'} }) }} 
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12  col-md-3">
+
+                            <div id="datepicker2">
+
+                                {{ form_row(form.partenza, {'attr': {'placeholder': 'check-out'} }) }}  
+                            </div>
+
+                        </div>
+                        <div class="col-xs-12 col-md-3">
+
+                            <div id="nPersone">
+                                {{ form_row(form.nPersone, {'attr': {'placeholder': 'nPerson'} }) }}  
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        {% endblock %}
+        {% block register %}
+            <div style="text-align:right">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    </a>
+                {% endif %}
+            </div>
+        {% endblock %}
+        <!-- FINE FORM DISPONIBILITA -->
+        {% block barr %}
+            <!-- INIZIO BARRA NAVIGAZIONE -->
+            <div class="container-fluid">  
+                <div class="row ">
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand " href="{{path('')}}">{{ entityhome[language].homenav}}</a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{{path('hotelnature_index_about_index')}}">{{ entityhome[language].aboutlink}}</a></li>
+                                <li><a href="{{path('hotelnature_index_service_index')}}">{{ entityhome[language].servicelink}}</a></li>
+                                <li><a href="{{path('hotelnature_index_gallery_index')}}">{{ entityhome[language].galerylink}}</a></li>
+                                <li><a href="{{path('hotelnature_index_contact_index')}}">{{ entityhome[language].contactlink}}</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="{{path('sonata_user_registration_register')}}"><span class="glyphicon glyphicon-user"></span> {{ entityhome[language].signuplink}}</a></li>
+                                <li><a href="{{ path('sonata_user_security_login')}}"><span class="glyphicon glyphicon-log-in"></span> {{ entityhome[language].loginlink}}</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- FINE BARRA NAVIGAZIONE -->
+        {% endblock %}
+        {% block indexbody %}
+        {% endblock %}
+
+
+        {% block footer %}
+            <!-- INIZIO FOOTER -->
+            <div class="container">
+                <div class="row servizi">
+                    <div class="col-md-4 text-mas_contact">
+                        <h3> {{ entityhome[language].titsocpage}} </h3>
+                        <a href="{{entityhome[language].linksoc1}}" target="_blank">
+                            <img  class="img-responsive"  style="padding: 2px;width: 220px; height: 55px;"
+                                  {% media entityhome.0.imgsoc1.id, 'big' %}</a>
+                        <a href="{{entityhome[language].linksoc2}}" target="_blank">  
+                            <img class="img-responsive"  style="padding: 2px;width: 220px; height: 55px;"
+                                 {% media entityhome.0.imgsoc2.id, 'big' %}</a>
+                        <a href="{{entityhome[language].linksoc3}}" target="_blank"> 
+                            <img class="img-responsive"  style="padding: 2px;width: 220px; height: 55px;"
+                                 {% media entityhome.0.imgsoc3.id, 'big' %}</a>
+                        <a href="{{entityhome[language].linksoc4}}" target="_blank">
+                            <img  class="img-responsive" style="padding: 2px;width: 220px; height: 55px;"
+                                  {% media entityhome.0.imgsoc4.id, 'big' %}</a>
+
+                    </div>
+                    <div class="col-md-4 text-mas_contact">
+                        <h3>Aguasclaras residencial</h3>
+                        <a href="{{path('')}}" target="_blank"><h4 style="color: #627D00"> {{ entityhome[language].homenav}}</h4></a>
+                        <a href="{{path('hotelnature_index_about_index')}}" target="_blank"><h4 style="color: #627D00"> {{ entityhome[language].aboutlink}}</h4></a>
+                        <a href="{{path('hotelnature_index_service_index')}}" target="_blank"><h4 style="color: #627D00"> {{ entityhome[language].servicelink}}</h4></a>
+                        <a href="{{path('hotelnature_index_gallery_index')}}" target="_blank"><h4 style="color: #627D00"> {{ entityhome[language].galerylink}}</h4></a>
+                        <a href="{{path('hotelnature_index_contact_index')}}" target="_blank"><h4 style="color: #627D00"> {{ entityhome[language].contactlink}}</h4></a>
+                        <a href="{{path('sonata_admin_dashboard')}}" target="_blank"><h4 style="color: #627D00">admin login</h4></a>
+                        <a href="{{path('prenotazioni')}}" target="_blank"><h4 style="color: #627D00">office login</h4></a>
+
+                    </div>
+                    <div class="col-md-4 text-mas_contact"><h3>{{ entityhome[language].titshare}}</h3>
+                        <div>            
+                            <div class="block_wide">
+                                <a href="http://www.facebook.com/sharer.php" >
+                                    <img src="{{ asset('img/social_icons/Facebook.png') }}" alt="social icons" />
+                                </a>
+                                <a href="https://plus.google.com/share" >
+                                    <img src="{{ asset('img/social_icons/Google+.png') }}" alt="social icons" />
+                                </a>
+                                <a href="http://twitter.com/home?status" >
+                                    <img src="{{ asset('img/social_icons/Twitter.png') }}" alt="social icons" />
+                                </a>
+                                <a href="https://www.linkedin.com/start/join" >
+                                    <img src="{{ asset('img/social_icons/Linkedin.png') }}" alt="social icons" />
+                                </a>
+                            </div>
+                             <p></p>
+                                <div class="block_wide">
+                                    <a href="https://www.blogger.com/blog_this.pyra?t=%3Cimg%20class%3D%22thumbnail%22%20src%3D%22https%3A%2F%2F3.bp.blogspot.com%2F-uhOCH2Q4DvE%2FWSrRliag54I%2FAAAAAAAAJ_A%2FWswYLGHo-NsVcSh6f1ShKCI6ESd9SNwFwCLcB%2Fs500%2Fenter1.jpg%22%3E+Aguasclaras+residence+is+located+in+a+good+neighborhood+of+Manaus+your+name+is+conjunto+Aguasclaras,quiet+neighborhood+near+the+green+area+of+the+park+sumauma&u=http://www.aguasclaras.info&n=+Aguasclaras+residencial,+pouasda+aparthotel+Manaus+Amazonas+Brasil" >
+                                    <img src="{{ asset('img/social_icons/Blogger.png') }}" alt="social icons" />
+                                </a>
+                                   <a href="https://www.addthis.com/tellfriend_v2.php?v=300&winname=addthis&pub=ra-548cdcad786cf694&source=men-300&lng=en&s=email&url=http%3A%2F%2Faguasclaras.info%2F&title=Aguasclaras%20residencial&ate=AT-ra-548cdcad786cf694/-/-/592d7556b0077277/3&uid=592711e47f62025d&uud=1&ct=1&ui_email_to=&ui_email_from=&ui_email_note=&tt=0&captcha_provider=recaptcha2&pro=0&ats=imp_url%3D1%26smd%3Drsi%253D%2526gen%253D0%2526rsc%253D%2526dr%253D%2526sta%253DAT-ra-548cdcad786cf694%25252F-%25252F-%25252F592d7556b0077277%25252F1%26hideEmailSharingConfirmation%3Dundefined%26service%3Demail%26media%3Dundefined%26description%3Dundefined%26passthrough%3Dundefined%26email_template%3Dundefined%26email_vars%3Dundefined&atc=username%3Dra-548cdcad786cf694%26services_exclude%3D%26services_exclude_natural%3D%26services_compact%3Dfacebook%252Cblogger%252Ctwitter%252Cprint%252Cemail%252Cpinterest_share%252Cgmail%252Cgoogle_plusone_share%252Clinkedin%252Cmailto%252Ctumblr%252Cmore%26product%3Dundefined%26widgetId%3Dundefined%26pubid%3Dra-548cdcad786cf694%26ui_pane%3Demail&rb=false" >
+                                    <img src="{{ asset('img/social_icons/Mail.png') }}" alt="social icons" />
+                                </a>
+                                </div>
+
+                            <!-- Histats.com  START  (aync)-->
+                            <script type="text/javascript">var _Hasync = _Hasync || [];
+                                _Hasync.push(['Histats.start', '1,3822034,4,0,0,0,00010000']);
+                                _Hasync.push(['Histats.fasi', '1']);
+                                _Hasync.push(['Histats.track_hits', '']);
+                                (function () {
+                                    var hs = document.createElement('script');
+                                    hs.type = 'text/javascript';
+                                    hs.async = true;
+                                    hs.src = ('//s10.histats.com/js15_as.js');
+                                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+                                })();</script>
+                            <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?3822034&101" alt="utenti collegati" border="0"></a></noscript>
+                            <!-- Histats.com  END  -->
+                            <hr>
+                            <p class="glyphicon glyphicon-copyright-mark" aria-hidden="true"> copyright :</p>
+                            <p> webonair</p>
+                            <p class="glyphicon glyphicon-registration-mark" aria-hidden="true"> registred :</p>
+                            <p> webonair</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                {% block javascripts %}
+                    <div id="fb-root"></div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+                    <script>
+                                // Put jQuery 1.10.2 into noConflict mode.
+                                var $jq1 = jQuery.noConflict(true);
+                    </script>
+                    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   
+                    <script src="{{ asset('js/jquery.ui.core.js') }}"></script>
+                    <script src="{{ asset('js/jquery.ui.datepicker.js') }}"></script>
+                    <script src="{{ asset('js/mia.js') }}"></script> 
+
+                {% endblock %}
+        </body>
+    </html>
+    <!-- FINE FOOTER -->
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

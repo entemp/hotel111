@@ -1,0 +1,28 @@
+{% block body %}
+<div class="sonata-user-edit-profile">
+
+    <h2>{{ "title_user_account" | trans({}, 'SonataUserBundle')}} - {{ "title_user_edit_profile" | trans({}, 'SonataUserBundle')}}</h2>
+
+    {{ form_errors(form) }}
+    
+    {% form_theme form _self %}
+
+    {% block field_row %}
+       {{ dump(form) }}
+       {{form_rest(form)}} 
+        {# custom field row output #}
+    {% endblock field_row %}
+
+    <form action="{{ path('sonata_user_profile_edit') }}" method="POST" class="form-horizontal">
+  {#}  <input type="hidden" name="csrf_field_name" value="{{ app.user.confirmationToken }}" /> #}
+            <div class="control-group">
+    {#}        {{ form_label(form.gender, 'token', {'attr': {'class': 'control-label'}}) }} #}
+            <div class="controls">{{ form_widget(form._token) }}</div>
+        </div>
+
+ 
+
+        <input type="submit" name="submit" value="{{ 'sonata_user_submit'|trans({}, 'SonataUserBundle') }}" />
+    </form>
+</div>
+{% endblock %}
